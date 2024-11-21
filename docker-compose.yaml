@@ -1,0 +1,63 @@
+version: '3'
+services:
+  
+  #PHP Service
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: oms-backend
+    container_name: oms-app
+    restart: unless-stopped
+    tty: true
+    environment:
+      SERVICE_NAME: app
+      SERVICE_TAGS: dev
+    working_dir: /var/www
+    networks:
+      - app-network
+    volumes:
+      - ./:/var/www
+      - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
+    depends_on:
+      - db
+
+  #Nginx Service
+  webserver:
+    image: nginx:alpine
+    container_name: oms-webserver
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "8081:80"
+      - "443:443"
+    networks:
+      - app-network
+    volumes:
+      - ./:/var/www
+      - ./docker-compose/nginx/conf.d:/etc/nginx/conf.d/default.conf
+      - ./public/dist:/var/www/public/dist
+
+  #MySQL Service
+  db:
+    image: mysql:8.4.3
+    container_name: oms-db
+    restart: unless-stopped
+    tty: true
+    environment:
+      MYSQL_DATABASE: oms
+      MYSQL_ROOT_PASSWORD: xiH1z14Wh~j5
+      MYSQL_USER: oms
+      MYSQL_PASSWORD: password
+    networks:
+      - app-network
+    volumes:
+      - oms-mysql:/var/lib/mysql
+
+#Docker Networks
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+    oms-mysql:
