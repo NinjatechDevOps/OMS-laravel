@@ -20,7 +20,7 @@ git clone <repository-url>
 
 ---
 
-## Step 3: Copy the contents of .env.example to .env 
+## Step 3: Copy the contents of .env.example to .env
 
 Copy the contents of .env.example to .env using the following command:
 
@@ -86,3 +86,28 @@ docker exec -it oms-app php artisan key:generate
 ## Step 7: Access the application
 
 You can now access the application on (http://localhost:8081/)
+
+## 🌟 Key Features
+
+- **Orders**
+  - Create Orders
+  - Pending Orders
+  - Complete Orders
+  - Pending Payments
+- **Products Management**
+- **Customer Records**
+- **API's**
+  - Products
+  - Customers
+  - Orders
+  - Order Create
+  - Get Discount
+  - Order Pay
+  - Order Status Update
+  - Retrieve Order
+
+## 🚀 API's
+
+1. **Import Json collection to postman:**
+
+    - `import postman_collection.json file to postman for api testing ( stored in public folder )`
