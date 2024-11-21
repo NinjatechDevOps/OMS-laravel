@@ -87,6 +87,8 @@ docker exec -it oms-app php artisan key:generate
 
 You can now access the application on (http://localhost:8081/)
 
+---
+
 ## 🌟 Key Features
 
 - **Orders**
