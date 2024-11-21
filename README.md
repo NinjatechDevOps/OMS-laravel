@@ -112,4 +112,4 @@ You can now access the application on (http://localhost:8081/)
 
 1. **Import Json collection to postman:**
 
-import postman_collection.json file to postman for api testing ( stored in public folder )
+import `postman_collection.json file` to postman for api testing ( stored in public folder )
